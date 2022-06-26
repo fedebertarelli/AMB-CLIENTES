@@ -82,6 +82,8 @@ if( $_POST){
 
     file_put_contents("archivo.txt", $jsonClientes);
 
+    
+
 }
 
 ?>
@@ -105,7 +107,7 @@ if( $_POST){
     </div>    
     <div class="row">
         <div class="col-6">
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form  action="" method="POST" enctype="multipart/form-data">
                             <div class="col-12 form-group">
                                 <label for="textDni">DNI: *</label>
                                 <input type="txt" id="txtDni" name="txtDni" class="form-control" required value="<?php echo isset($aClientes[$id])? $aClientes[$id]["dni"] : ""?>">
@@ -130,9 +132,8 @@ if( $_POST){
                             <div class="row">
                                 <div class="col-12 mt-3">
                                     <button type="submit" id="btnGuardar" name="btnGuardar" class="btn btn-primary"> Guardar </button>
-                                    <button type="submit" id="btnGuardar" name="btnGuardar" class="btn btn-secondary"> Limpiar </button>
-                                    <button type="submit" id="btnGuardar" name="btnGuardar" class="btn btn-danger"> Borrar </button>
-                                    <button type="submit" id="btnGuardar" name="btnGuardar" class="btn btn-success"> Actulizar </button>
+                                    <button type="button" id="btnLimpiar" name="btnLimpiar" class="btn btn-secondary" onclick=" return limpiar()"> Limpiar </button>
+                                    <button type="submit" id="btnActulizar" name="btnActuliar" class="btn btn-success"> Actulizar </button>
                                 </div>
                             </div>                          
             </form>
@@ -148,7 +149,7 @@ if( $_POST){
                 </tr>
                 <?php foreach($aClientes as $key => $cliente): ?>
                  <tr>
-                    <td><img src="archivos/<?php echo $cliente['imagen'];?>" class="img-thumbnail"></td>
+                    <td><img src="archivos/<?php echo $cliente['imagen'];?>" style ="height: 70px;" class="img-thumbnail"></td>
                     <td><?php echo $cliente["dni"]?></td>
                     <td><?php echo $cliente["nombre"]?></td>
                     <td><?php echo $cliente["correo"]?></td>
@@ -164,4 +165,14 @@ if( $_POST){
     </div>
 </div>    
 </body>
+<script>
+
+    function limpiar(){
+        document.getElementById("txtDni").value= "";
+        document.getElementById("txtNombre").value= "";
+        document.getElementById("txtTelefono").value= "";
+        document.getElementById("txtCorreo").value= "";
+    }
+
+</script>
 </html>
